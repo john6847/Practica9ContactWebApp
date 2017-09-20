@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <h:outputStylesheet library="css" name="style.css"/>
+</h:head>
+
+<h:body>
+
+    <h:form id="form">
+        <p:growl id="msgs" showDetail="true" />
+
+        <p:dataTable style="background: #a5eeff; text-align: left" id="basicDT" var="contacto" value="#{miFormulario.contactos}">
+            <f:facet  id="basico" name="header">
+                <ul style="background: #5553ff;list-style-type: none; color: white; font-size: 50px;font-family: Courier New, Courier, monospace">
+                    <li style="text-decoration: none">Contactos Registrados</li>
+                </ul>
+                <p:column style="width:32px;text-align: center">
+                    <p:commandButton action="#{miFormulario.irAIndex}"  title="Crear Contacto" icon="ui-icon-disk" >
+                        <!--<f:setPropertyActionListener value="#{contacto}" target="#{miFormulario.selectedContact}" />-->
+                    </p:commandButton>
+                </p:column>
+            </f:facet>
+            <p:column headerText="Nombre">
+                <h:outputText value="#{contacto.nombre}" />
+            </p:column>
+            <p:column headerText="Apellido">
+                <h:outputText value="#{contacto.apellido}" />
+            </p:column>
+            <p:column headerText="Direccion">
+                <h:outputText value="#{contacto.direccion}" />
+            </p:column>
+            <p:column headerText="Correo">
+                <h:outputText value="#{contacto.email}" />
+            </p:column>
+
+            <p:column style="width:40px;text-align: center">
+                <p:commandButton action="#{miFormulario.mandarAlaTabla}" style="background: #ffe05d"    icon="ui-icon-search" title="View">
+                <!--<p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" icon="ui-icon-search" title="View">-->
+                <f:setPropertyActionListener value="#{contacto}" target="#{miFormulario.selectedContact}"  />
+                </p:commandButton>
+            </p:column>
+
+            <p:column style="width:40px;text-align: center">
+            <p:commandButton action="#{miFormulario.eliminarContacto}"  title="Delete" icon="ui-icon-trash" >
+                <f:setPropertyActionListener value="#{contacto}" target="#{miFormulario.selectedContact}" />
+            </p:commandButton>
+            </p:column>
+
+
+        </p:dataTable>
+    </h:form>
+</h:body>
+</html>

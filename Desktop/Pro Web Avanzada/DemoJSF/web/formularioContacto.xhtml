@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title> Crear contacto</title>
+</h:head>
+<h:body>
+
+    <h:form>
+        <h:panelGrid columns="1" style="background-color: lavender; border: 1px dashed darkblue; margin-left:60px; margin-top: 40px;padding-left: 30px; padding-top: 30px">
+            <h1>Crear un contacto completo</h1>
+            <h:outputLabel value="Nombre: " for="nombre"/>
+            <h:inputText id="nombre" value="#{miFormulario.selectedContact.nombre}"
+                         validatorMessage="El apellido debe tener entre #{2} y #{10} caracteres">
+                <f:validateLength maximum="10" minimum="5"/>
+            </h:inputText>
+            <h:message style="color: red" for="nombre"/><br/>
+
+            <h:outputLabel value="Apellido: " for="apellido"/>
+            <h:inputText id="apellido" value="#{miFormulario.selectedContact.apellido}"
+                         validatorMessage="El apellido debe tener entre #{2} y #{10} ">
+                <f:validateLength minimum="2" maximum="10"/>
+            </h:inputText>
+            <h:message style="color: red" for="apellido"/><br/>
+
+            <h:outputLabel value="Direccion: " for="direccion"/>
+            <h:inputText id="direccion" value="#{miFormulario.selectedContact.direccion}"/>
+            <h:message for="direccion" style="color:red"/><br/>
+
+            <h:outputLabel value="Telefono: " for="telefono"/>
+            <p:inputMask id="telefono" value="#{miFormulario.selectedContact.telefono}" mask="(999) 999-9999"/>
+            <h:message for="telefono" style="color: red"/>
+
+            <h:outputLabel value="Email: " for="email"/>
+            <h:inputText id="email" value="#{miFormulario.selectedContact.email}" validatorMessage="el correo no es correcto">
+                    <!--<f:validateRegex-->
+                            <!--pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+\\\\.[a-zA-Z0-9]+"/>-->
+            </h:inputText>
+            <h:message for="email" style="color: red"/>
+            <h:commandButton action="#{miFormulario.procesarFormularioModficada()}" value="Crear contacto"/>
+        </h:panelGrid>
+
+
+    </h:form>
+</h:body>
+</html>

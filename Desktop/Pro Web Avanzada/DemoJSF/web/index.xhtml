@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+>
+<h:head>
+   <f:facet name="first">
+      <title>primestrap</title>
+   </f:facet>
+
+   <f:facet name="middle">
+
+   </f:facet>
+
+   <f:facet name="last">
+
+   </f:facet>
+</h:head>
+<h:body>
+
+   <h:form>
+      <h:panelGrid columns="1" style="background-color: lavender; border: 1px dashed darkblue; margin-left:60px; margin-top: 40px;padding-left: 30px; padding-top: 30px">
+         <h1>Crear un contacto rapido</h1>
+         <h:outputLabel value="Nombre: " for="nombre"/>
+         <h:inputText id="nombre" value="#{miFormulario.nombre}" validatorMessage="El apellido debe tener entre #{2} y #{10} caracteres">
+            <f:validateLength maximum="10" minimum="5"/>
+         </h:inputText>
+         <h:message style="color: red" for="nombre"/><br/>
+
+         <h:outputLabel value="Apellido: " for="apellido"/>
+         <h:inputText id="apellido" value="#{miFormulario.apellido}" validatorMessage="El apellido debe tener entre #{2} y #{10} caracteres ">
+            <f:validateLength minimum="2" maximum="10"/>
+         </h:inputText>
+         <h:message style="color: red" for="apellido"/><br/>
+         <!--Enviando el formulario vía POST-->
+         <h:commandButton action="#{miFormulario.procesarFormularioMetodoPost()}" value="Crear Contacto" />
+      </h:panelGrid>
+
+   </h:form>
+
+</h:body>
+</html>
